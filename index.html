@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker - Daily Habit Journal</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for clean & professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Tracker</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <button class="menu-item active" data-tab="dashboard-tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="menu-item" data-tab="analytics-tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Analytics</span>
+                </button>
+                <button class="menu-item" data-tab="notes-tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Notes</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="theme-toggle-btn" id="themeToggleBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon sun-icon">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon moon-icon" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <span>Toggle Theme</span>
+                </button>
+                <div class="sidebar-quote">
+                    <p class="quote-text">"Consistency is the architecture of success."</p>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header Section -->
+            <header class="main-header">
+                <!-- Month Switcher (Left) -->
+                <div class="month-selector">
+                    <button class="selector-btn" id="prevMonthBtn" title="Previous Month">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <h2 class="current-month-label" id="currentMonthLabel">June 2026</h2>
+                    <button class="selector-btn" id="nextMonthBtn" title="Next Month">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Add New Habit Button (Right) -->
+                <button class="btn btn-primary" id="addHabitBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>New Habit</span>
+                </button>
+            </header>
+            <!-- Tab Panels Container -->
+            <div class="tab-panels">
+                
+                <!-- 1. Dashboard Tab -->
+                <section class="tab-panel active" id="dashboard-tab">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-title">GOAL</span>
+                            <span class="stat-value" id="statGoal">270</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">COMPLETED</span>
+                            <span class="stat-value completed-value" id="statCompleted">62</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">LEFT</span>
+                            <span class="stat-value" id="statLeft">208</span>
+                        </div>
+                        <div class="stat-card progress-card">
+                            <span class="stat-title">PROGRESS</span>
+                            <span class="stat-value" id="statProgress">23%</span>
+                        </div>
+                    </div>
+                    <!-- Habit Tracker Board Card -->
+                    <div class="habit-board-container card-glass">
+                        <div class="habit-grid-wrapper" id="habitGridWrapper">
+                            <!-- JS will dynamically inject the grid headers and habit rows here -->
+                            <div class="habit-grid-loader">
+                                <span class="spinner"></span> Loading Habit Board...
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 2. Analytics Tab -->
+                <section class="tab-panel" id="analytics-tab">
+                    <div class="analytics-layout">
+                        <!-- Chart Card -->
+                        <div class="chart-card card-glass">
+                            <h3>Daily Progress</h3>
+                            <div class="chart-container">
+                                <div class="y-axis">
+                                    <span>100%</span>
+                                    <span>75%</span>
+                                    <span>50%</span>
+                                    <span>25%</span>
+                                    <span>0%</span>
+                                </div>
+                                <div class="chart-bars-container" id="chartBarsContainer">
+                                    <!-- JS will inject bars here -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side stats & breakdowns -->
+                        <div class="analytics-details">
+                            <!-- Streaks Card -->
+                            <div class="streaks-card card-glass">
+                                <h3>Streaks Summary</h3>
+                                <div class="streaks-list" id="streaksList">
+                                    <!-- JS will render habit streaks here -->
+                                </div>
+                            </div>
+                            <!-- Habit Completion Rate Card -->
+                            <div class="rates-card card-glass">
+                                <h3>Habit Breakdown</h3>
+                                <div class="rates-list" id="ratesList">
+                                    <!-- JS will render rate bars here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 3. Notes Tab -->
+                <section class="tab-panel" id="notes-tab">
+                    <div class="notes-layout">
+                        <!-- Left: Notes List -->
+                        <div class="notes-sidebar card-glass">
+                            <div class="notes-sidebar-header">
+                                <h3>Journal Logs</h3>
+                                <button class="btn btn-small" id="newNoteBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span>Add Note</span>
+                                </button>
+                            </div>
+                            <div class="notes-list" id="notesList">
+                                <!-- JS will inject notes list items here -->
+                                <div class="empty-notes-message">No notes recorded yet</div>
+                            </div>
+                        </div>
+                        <!-- Right: Note Editor -->
+                        <div class="notes-editor card-glass" id="noteEditor">
+                            <form id="noteForm">
+                                <input type="hidden" id="noteId">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="noteDate">Date</label>
+                                        <input type="date" id="noteDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="noteHabitLink">Associate with Habit (Optional)</label>
+                                        <select id="noteHabitLink">
+                                            <option value="">None</option>
+                                            <!-- Dynamically populated -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noteTitle">Title</label>
+                                    <input type="text" id="noteTitle" placeholder="E.g., Morning workout reflection..." required autocomplete="off">
+                                </div>
+                                <div class="form-group content-group">
+                                    <label for="noteContent">Details</label>
+                                    <textarea id="noteContent" placeholder="Write about your progress, challenges, or thoughts..." required></textarea>
+                                </div>
+                                <div class="editor-actions">
+                                    <button type="button" class="btn btn-danger" id="deleteNoteBtn" style="display: none;">Delete</button>
+                                    <button type="submit" class="btn btn-primary" id="saveNoteBtn">Save Journal Entry</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <!-- Create/Edit Habit Modal Overlay -->
+    <div class="modal-overlay" id="habitModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modalTitle">Create New Habit</h3>
+                <button class="modal-close-btn" id="closeHabitModalBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <form id="habitForm">
+                <input type="hidden" id="habitIdInput">
+                <div class="form-group">
+                    <label for="habitName">Habit Name</label>
+                    <input type="text" id="habitName" placeholder="E.g., Meditation, Workout, Reading" required autocomplete="off">
+                </div>
+                
+                <div class="form-group">
+                    <label>Habit Icon / Emoji</label>
+                    <div class="icon-selector-grid">
+                        <button type="button" class="icon-option active" data-icon="🕌">🕌</button>
+                        <button type="button" class="icon-option" data-icon="⏰">⏰</button>
+                        <button type="button" class="icon-option" data-icon="💪">💪</button>
+                        <button type="button" class="icon-option" data-icon="🧘">🧘</button>
+                        <button type="button" class="icon-option" data-icon="📚">📚</button>
+                        <button type="button" class="icon-option" data-icon="💧">💧</button>
+                        <button type="button" class="icon-option" data-icon="🥗">🥗</button>
+                        <button type="button" class="icon-option" data-icon="📵">📵</button>
+                        <button type="button" class="icon-option" data-icon="✍️">✍️</button>
+                        <button type="button" class="icon-option" data-icon="🏃">🏃</button>
+                        <button type="button" class="icon-option" data-icon="🍎">🍎</button>
+                        <button type="button" class="icon-option" data-icon="😴">😴</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Accent Color</label>
+                    <div class="color-selector-grid">
+                        <button type="button" class="color-option active" data-color="teal" style="--btn-color: #21b397;" title="Teal"></button>
+                        <button type="button" class="color-option" data-color="purple" style="--btn-color: #9d4edd;" title="Purple"></button>
+                        <button type="button" class="color-option" data-color="orange" style="--btn-color: #ff9e00;" title="Orange"></button>
+                        <button type="button" class="color-option" data-color="red" style="--btn-color: #e63946;" title="Red"></button>
+                        <button type="button" class="color-option" data-color="blue" style="--btn-color: #0077b6;" title="Blue"></button>
+                        <button type="button" class="color-option" data-color="green" style="--btn-color: #38b000;" title="Green"></button>
+                        <button type="button" class="color-option" data-color="pink" style="--btn-color: #ff007f;" title="Pink"></button>
+                        <button type="button" class="color-option" data-color="yellow" style="--btn-color: #ffd166;" title="Yellow"></button>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="deleteHabitActionBtn" style="display: none;">Delete Habit</button>
+                    <div style="flex-grow: 1;"></div>
+                    <button type="button" class="btn btn-secondary" id="cancelHabitModalBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveHabitBtn">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html
